@@ -1,3 +1,5 @@
+import cart from "./services/cart.js";
+
 let carouselText = document.getElementById("carousel-text")! as HTMLParagraphElement;
 let carouselImage = document.getElementById("carousel-image")! as HTMLImageElement;
 let dots = document.querySelectorAll(".dot") as NodeListOf<HTMLDivElement>;
@@ -7,6 +9,7 @@ let cartIcon = document.getElementById("cart-icon")! as HTMLDivElement;
 let numberOfItems = document.getElementById("number-of-items")! as HTMLDivElement;
 let addToCartBtn = document.getElementById("add-to-cart")! as HTMLButtonElement
 let utils = document.querySelector(".utils")! as HTMLDivElement;
+let productContainer = document.querySelector(".product")! as HTMLDivElement;
 interface CarouselItem {
     text: string;
     image: string;
@@ -18,7 +21,7 @@ window.addEventListener("scroll", () => {
     if (window.pageYOffset > 0) {
         utils.style.position = "fixed";
         utils.style.top = "0";
-        utils.style.width = "100%";
+        utils.style.width = "95%";
         utils.style.zIndex = "100";
     }
     else {
@@ -66,8 +69,7 @@ setInterval(() => {
     );
     dots[randomIndex].classList.add("active");
     
-}
-    , 5000);
+},5000);
 
 carouselLeftArrow.addEventListener("click", () => {
     let activeDot = document.querySelector(".dot.active")! as HTMLDivElement;
@@ -98,18 +100,36 @@ carouselRightArrow.addEventListener("click", () => {
 }
 );
 
+
+// page navigations
 cartIcon.addEventListener("click", () => {
     window.location.href = "./src/components/cart/cart.html";
-  
+}
+);
 
+productContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
+    window.location.href = "./src/components/singleproduct/product.html";
+    
 }
 );
 
 
-addToCartBtn.addEventListener("click", () => {
+
+addToCartBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
     numberOfItems.style.display = "block";
-    let items =numberOfItems.innerHTML === "" ? 1 : parseInt(numberOfItems.innerHTML);
-    numberOfItems.innerHTML = (items + 1).toString();
-    console.log("added to cart");
+    let id = Math.floor(Math.random() * 1000).toString();
+    cart.addItem({
+        id: id,
+        name: "chair",
+        price: 100,
+        quantity: 1,
+        image: "./asset/Image-2.png"
+    }
+    );
+    numberOfItems.innerHTML = cart.getItems().length.toString();
+
+    console.log(cart.getItems());
 }
 );

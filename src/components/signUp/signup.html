@@ -59,33 +59,32 @@
             <p>call us</p>
         </div>
     </nav>
-    <div class="cart-items">
-        <div class="cart-item">
-            <div class="item-image">
-                <img src="../../../asset/Product Image.png" alt="item" style="width: 100px; height: 100px;">
-            </div>
-            <div class="item-info">
-                <div class="wrapper">
-                    <h3>Armchair </h3>
-                    <p> $200.00</p>
-                </div>
-                <div class="actions">
 
-                    <span><ion-icon name="trash-outline" id="delete-btn"></ion-icon></span>
-    
-    
-                    <span> <ion-icon name="remove-outline" id="minus-btn"></ion-icon></span>
-                    <p id="items-number">1</p>
-                    <span>
-                        <ion-icon name="add-outline" id="add-btn"></ion-icon>
-                    </span>
-    
-    
-    
-                </div>
+    <div class="form-group">
+        <form method="post">
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name">
+
             </div>
-            
-        </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email">
+
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password">
+
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" name="confirm-password" id="confirm-password"
+                    placeholder="Enter your confirm password">
+
+            </div>
+            <button>Sign Up</button>
+        </form>
     </div>
     <footer>
         <div class="footer-items">
@@ -132,7 +131,7 @@
             <p>© 2021 All Rights Reserved. </p> <img src="../../../asset/Group 13.png"
                 alt="payment">
     </footer>
-    <script type="module" src="../.././../dist/components/cart/cart.js" defer></script>
+    <script src="../../../dist/components/cart.js" defer></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
